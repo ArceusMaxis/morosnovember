@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://gq2r3xwgap4u"]
+
+[ext_resource type="Script" path="res://scripts/bleed.gd" id="1_pfwlr"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_fpgo7"]
+size = Vector2(0.2, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fxh24"]
+shading_mode = 0
+albedo_color = Color(0.585847, 1.44392e-06, 2.88785e-07, 1)
+billboard_mode = 2
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_fe17o"]
+height = 10.0
+radius = 0.1
+
+[node name="Bleed" type="Node3D"]
+script = ExtResource("1_pfwlr")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+mesh = SubResource("QuadMesh_fpgo7")
+material = SubResource("StandardMaterial3D_fxh24")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CylinderShape3D_fe17o")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_player_entered"]

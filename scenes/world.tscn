@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=3 uid="uid://c78gnrtarhmby"]
+
+[ext_resource type="Script" path="res://scripts/world.gd" id="1_3a26t"]
+[ext_resource type="PackedScene" uid="uid://gq2r3xwgap4u" path="res://scenes/bleed.tscn" id="2_sqhxu"]
+[ext_resource type="PackedScene" uid="uid://b15uh8grg0y11" path="res://scenes/orb.tscn" id="3_af6wv"]
+[ext_resource type="PackedScene" uid="uid://djgaq0lj74xvb" path="res://scenes/player.tscn" id="3_vth6p"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mpb8u"]
+shading_mode = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_chhi8"]
+material = SubResource("StandardMaterial3D_mpb8u")
+size = Vector2(20480, 20480)
+
+[sub_resource type="Environment" id="Environment_h7dxh"]
+background_mode = 1
+background_color = Color(1, 1, 1, 1)
+
+[node name="World" type="Node3D"]
+script = ExtResource("1_3a26t")
+bleed_scn = ExtResource("2_sqhxu")
+orb_scn = ExtResource("3_af6wv")
+lore = Array[String](["Seek His grace.", "The final offering must be made.", "His hunger crumbles the sky.", "His pity remains unwavering.", "Your penance feeds Him.", "His pain bleeds as your test.", "The whispers grow ever fainter.", "Seek the truth in this unmarred land.", "He witnesses all, atones and absolves."])
+
+[node name="floor" type="CSGMesh3D" parent="."]
+use_collision = true
+mesh = SubResource("PlaneMesh_chhi8")
+
+[node name="Player" parent="." instance=ExtResource("3_vth6p")]
+unique_name_in_owner = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_h7dxh")
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 5.0
+autostart = true

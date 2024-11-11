@@ -1,0 +1,100 @@
+[gd_scene load_steps=8 format=3 uid="uid://djgaq0lj74xvb"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_k7ecq"]
+[ext_resource type="FontFile" uid="uid://qhvvmxgxswvh" path="res://font/Deutsch.ttf" id="2_nki4i"]
+[ext_resource type="AudioStream" uid="uid://duwlf0d8l8ypg" path="res://sounds/collected.wav" id="3_dxlkv"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7ppoy"]
+
+[sub_resource type="Animation" id="Animation_lspdw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("hud/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.584314, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_efwk6"]
+resource_name = "blink"
+length = 0.25
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("hud/ColorRect:color")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.584314, 0, 0, 0.470588), Color(0.584314, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_582dd"]
+_data = {
+"RESET": SubResource("Animation_lspdw"),
+"blink": SubResource("Animation_efwk6")
+}
+
+[node name="Player" type="CharacterBody3D" groups=["player"]]
+script = ExtResource("1_k7ecq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_7ppoy")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="hud" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="score" type="Label" parent="hud"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -77.0
+offset_top = -33.0
+offset_right = -4.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.585847, 1.44392e-06, 2.88785e-07, 1)
+theme_override_fonts/font = ExtResource("2_nki4i")
+theme_override_font_sizes/font_size = 30
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="hud"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.584314, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_582dd")
+}
+
+[node name="collected" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_dxlkv")
+volume_db = -8.0

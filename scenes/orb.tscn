@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://b15uh8grg0y11"]
+
+[ext_resource type="Script" path="res://scripts/orb.gd" id="1_kdh4a"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u5x3o"]
+shading_mode = 0
+albedo_color = Color(0.585847, 1.44392e-06, 2.88785e-07, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_qd7ew"]
+material = SubResource("StandardMaterial3D_u5x3o")
+size = Vector2(0.4, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u0dgr"]
+shading_mode = 0
+albedo_color = Color(0.585847, 1.44392e-06, 2.88785e-07, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_pfj6i"]
+
+[node name="Orb" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+script = ExtResource("1_kdh4a")
+
+[node name="pfx" type="CPUParticles3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+emitting = false
+amount = 20
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+local_coords = true
+mesh = SubResource("QuadMesh_qd7ew")
+emission_shape = 2
+emission_sphere_radius = 0.5
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 3.0
+initial_velocity_max = 5.0
+scale_amount_min = 0.8
+scale_amount_max = 1.2
+color = Color(0.585847, 1.44392e-06, 2.88785e-07, 1)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+rings = 12
+material = SubResource("StandardMaterial3D_u0dgr")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_pfj6i")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 30.0
+autostart = true
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_collected"]

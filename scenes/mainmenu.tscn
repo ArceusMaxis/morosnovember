@@ -1,0 +1,179 @@
+[gd_scene load_steps=10 format=3 uid="uid://w5uocx3qbdkx"]
+
+[ext_resource type="Script" path="res://scripts/mainmenu.gd" id="1_7hhf4"]
+[ext_resource type="FontFile" uid="uid://qhvvmxgxswvh" path="res://font/Deutsch.ttf" id="2_mtb0i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_euilp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_im6n0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5rmry"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ixqg5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q2iqa"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vo6o1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cbwst"]
+
+[node name="menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7hhf4")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -480.0
+offset_top = -270.0
+offset_right = 480.0
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.585847, 1.44392e-06, 2.88785e-07, 1)
+theme_override_fonts/font = ExtResource("2_mtb0i")
+theme_override_font_sizes/font_size = 255
+text = "MOROS"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 246.0
+offset_top = -26.0
+offset_right = 445.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.585847, 1.44392e-06, 2.88785e-07, 1)
+theme_override_fonts/font = ExtResource("2_mtb0i")
+theme_override_font_sizes/font_size = 20
+text = "inspired by fluoroantimonic"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="highscorel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.5
+offset_top = -26.0
+offset_right = 99.5
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.585847, 1.44392e-06, 2.88785e-07, 1)
+theme_override_fonts/font = ExtResource("2_mtb0i")
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -442.0
+offset_top = -26.0
+offset_right = -243.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.585847, 1.44392e-06, 2.88785e-07, 1)
+theme_override_fonts/font = ExtResource("2_mtb0i")
+theme_override_font_sizes/font_size = 20
+text = "a tragedy by chaak"
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -480.0
+offset_top = 120.0
+offset_right = 480.0
+offset_bottom = 270.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="play" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(300, 150)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.585847, 1.44392e-06, 2.88785e-07, 1)
+theme_override_colors/font_color = Color(0.585847, 1.44392e-06, 2.88785e-07, 1)
+theme_override_fonts/font = ExtResource("2_mtb0i")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/focus = SubResource("StyleBoxEmpty_euilp")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_im6n0")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_5rmry")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ixqg5")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_q2iqa")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_vo6o1")
+text = "enter"
+flat = true
+
+[node name="Control" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="quit" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(300, 150)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.585847, 1.44392e-06, 2.88785e-07, 1)
+theme_override_colors/font_color = Color(0.585847, 1.44392e-06, 2.88785e-07, 1)
+theme_override_fonts/font = ExtResource("2_mtb0i")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/focus = SubResource("StyleBoxEmpty_euilp")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_im6n0")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_5rmry")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ixqg5")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_q2iqa")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_vo6o1")
+text = "rest"
+flat = true
+
+[node name="itch" type="Button" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 254.0
+offset_right = 184.0
+offset_bottom = 270.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cbwst")
+flat = true
+
+[node name="fluoro" type="Button" parent="."]
+layout_mode = 0
+offset_left = 725.0
+offset_top = 254.0
+offset_right = 925.0
+offset_bottom = 270.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cbwst")
+flat = true
